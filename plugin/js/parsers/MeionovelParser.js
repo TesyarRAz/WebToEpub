@@ -1,14 +1,14 @@
 "use strict";
 
-parserFactory.register("meionovel.id", () => new MeionovelParser());
+parserFactory.register("meionovels.com", () => new MeionovelParser());
 
-class MeionovelParser extends Parser{
+class MeionovelParser extends WordpressBaseParser{
     constructor() {
         super();
     }
 
     async getChapterUrls(dom) {
-        let menu = dom.querySelector("div.listing-chapters_wrap ul.list-chap");
+        let menu = dom.querySelector("div.listing-chapters_wrap ul");
         return util.hyperlinksToChapterList(menu).reverse();
     }
 
